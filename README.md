@@ -1,2 +1,2 @@
-# pearl-miner
-The miner for pearl.
+# Pearl Miner
+More details see https://github.com/h9-dev/pearl-miner/releases
