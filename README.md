@@ -5,15 +5,15 @@ More details see https://github.com/h9-dev/pearl-miner/releases
 
 ## 中文
 
-`h9-miner-pearl` 是 PEARL 的 CUDA 矿工程序。最常用的启动参数是 `--apiKey` 和 `--devices`。
+`h9-miner-pearl` 的启动参数是 `--apiKey` 和 `--devices`。
 
 ### 获取 APIKey
 
-APIKey 从 H9 PEARL 矿池页面获取：
+APIKey 从 H9 PEARL 页面获取：
 
 https://www.h9.com/mypools/pearl
 
-登录后进入 PEARL 矿池页面，复制你的 APIKey，然后在启动命令中通过 `--apiKey` 传入。
+登录后进入 PEARL 页面，复制你的 APIKey，然后在启动命令中通过 `--apiKey` 传入。
 
 ### 基本启动
 
@@ -67,7 +67,7 @@ https://www.h9.com/mypools/pearl
 ./h9-miner-pearl --apiKey=你的APIKey --devices=0,1,2,3
 ```
 
-设置矿工名称：
+设置名称：
 
 ```bash
 ./h9-miner-pearl --apiKey=你的APIKey --devices=0,1 --name=worker-001
@@ -77,9 +77,9 @@ https://www.h9.com/mypools/pearl
 
 | 参数 | 说明 | 示例 |
 | --- | --- | --- |
-| `--apiKey` / `--apikey` | H9 PEARL 矿池 APIKey | `--apiKey=abc123` |
+| `--apiKey` / `--apikey` | H9 PEARL APIKey | `--apiKey=abc123` |
 | `--devices` | 指定 CUDA 显卡编号，多个编号用英文逗号分隔 | `--devices=0,1` |
-| `--name` | 设置矿工名称；不设置时默认使用机器名 | `--name=worker-001` |
+| `--name` | 设置名称；不设置时默认使用机器名 | `--name=worker-001` |
 
 ### 注意事项
 
@@ -90,85 +90,86 @@ https://www.h9.com/mypools/pearl
 
 ## English
 
-`h9-miner-pearl` is the CUDA miner for PEARL. The two most important startup options are `--apiKey` and `--devices`.
+The startup arguments for `h9-miner-pearl` are `--apiKey` and `--devices`.
 
 ### Get Your APIKey
 
-Get your APIKey from the H9 PEARL pool page:
+Get your APIKey from the H9 PEARL page:
 
 https://www.h9.com/mypools/pearl
 
-Sign in, open the PEARL pool page, copy your APIKey, and pass it to the miner with `--apiKey`.
+After logging in, open the PEARL page, copy your APIKey, and pass it to the startup command with `--apiKey`.
 
-### Basic Start
+### Basic Startup
 
 ```bash
-./h9-miner-pearl --apiKey=YOUR_API_KEY
+./h9-miner-pearl --apiKey=yourAPIKey
 ```
 
-The lowercase option name also works:
+You can also use the lowercase argument name:
 
 ```bash
-./h9-miner-pearl --apikey=YOUR_API_KEY
+./h9-miner-pearl --apikey=yourAPIKey
 ```
 
-`--apiKey` and `--apikey` are equivalent.
+Both `--apiKey` and `--apikey` are supported and have the same effect.
 
-### Select GPUs
+### Specify GPUs
 
-Use `--devices` to select CUDA GPUs. Device IDs start from `0`.
+Use `--devices` to specify which CUDA GPUs to use. Device IDs start from `0`.
 
-Use GPU 0 only:
+Use only GPU 0:
 
 ```bash
-./h9-miner-pearl --apiKey=YOUR_API_KEY --devices=0
+./h9-miner-pearl --apiKey=yourAPIKey --devices=0
 ```
 
 Use GPU 0 and GPU 1:
 
 ```bash
-./h9-miner-pearl --apiKey=YOUR_API_KEY --devices=0,1
+./h9-miner-pearl --apiKey=yourAPIKey --devices=0,1
 ```
 
-If `--devices` is not set, the miner uses all available CUDA GPUs by default.
+If `--devices` is not set, the miner uses all CUDA GPUs on the machine by default.
 
 ### Common Examples
 
 Use all GPUs:
 
 ```bash
-./h9-miner-pearl --apiKey=YOUR_API_KEY
+./h9-miner-pearl --apiKey=yourAPIKey
 ```
 
-Use one GPU:
+Use only one GPU:
 
 ```bash
-./h9-miner-pearl --apiKey=YOUR_API_KEY --devices=0
+./h9-miner-pearl --apiKey=yourAPIKey --devices=0
 ```
 
 Use multiple GPUs:
 
 ```bash
-./h9-miner-pearl --apiKey=YOUR_API_KEY --devices=0,1,2,3
+./h9-miner-pearl --apiKey=yourAPIKey --devices=0,1,2,3
 ```
 
-Set a miner name:
+Set a worker name:
 
 ```bash
-./h9-miner-pearl --apiKey=YOUR_API_KEY --devices=0,1 --name=worker-001
+./h9-miner-pearl --apiKey=yourAPIKey --devices=0,1 --name=worker-001
 ```
 
-### Options
+### Arguments
 
-| Option | Description | Example |
+| Argument | Description | Example |
 | --- | --- | --- |
-| `--apiKey` / `--apikey` | H9 PEARL pool APIKey | `--apiKey=abc123` |
-| `--devices` | CUDA GPU device IDs, separated by commas | `--devices=0,1` |
-| `--name` | Miner name; defaults to the machine hostname when unset | `--name=worker-001` |
+| `--apiKey` / `--apikey` | H9 PEARL APIKey | `--apiKey=abc123` |
+| `--devices` | Specifies CUDA GPU device IDs. Separate multiple IDs with commas. | `--devices=0,1` |
+| `--name` | Sets the worker name. If omitted, the machine name is used by default. | `--name=worker-001` |
 
 ### Notes
 
 - Get your APIKey from https://www.h9.com/mypools/pearl.
-- Values passed to `--devices` must match CUDA device IDs available on the current machine.
-- Separate multiple GPU IDs with commas and no spaces, for example `--devices=0,1,2`.
-- If the miner reports an invalid device ID, check the actual GPU count and device IDs on the machine.
+- The IDs in `--devices` must match existing CUDA device IDs on the current machine.
+- Separate multiple GPUs with commas and do not add spaces, for example `--devices=0,1,2`.
+- If startup reports an invalid device ID, first check the actual number and IDs of GPUs on the machine.
+
