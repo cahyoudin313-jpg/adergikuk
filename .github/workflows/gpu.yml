@@ -1,19 +1,10 @@
 jobs:
-  train:
-    runs-on: machine/gpu=l4/tenancy=spot
-    timeout-minutes: 120
+  lint:
+    runs-on: ubuntu-latest          # GitHub-hosted, free for public repos
     steps:
       - uses: actions/checkout@v4
+      - run: ./lint.sh
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Verify GPU
-        run: nvidia-smi
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Train
-        run: python train.py
+  train:
+    needs: lint
+    runs-on: machine/gpu=a10g/tenancy=spot
